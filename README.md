@@ -11,7 +11,8 @@ Flowchart:
    ↓
 Kiểm tra Văn bản rỗng/ dưới 3 ký tự?
 ├ Có → Cảnh báo → Quay lại nhập (B3)
-└─ Không → Tiền xử lý văn bản (B5)
+└─ Không → Tiền xử lý văn bản (B5)//
+
       ↓
 6. Tìm lỗi 
       ↓
