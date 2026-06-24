@@ -204,9 +204,7 @@ if st.session_state.show_translate_section and st.session_state.corrected_text:
                 st.error(f"❌ Lỗi khi dịch: {str(e)}")
                 st.info("Kiểm tra kết nối internet hoặc thử lại sau.")
     
-    else:
-        # Người dùng chọn không dịch
-        st.info("ℹ️ Bạn đã chọn không dịch văn bản.")
+    
 
 #  B9: Nút làm mới 
 st.markdown("---")
