@@ -33,51 +33,30 @@ st.set_page_config(
     page_icon="🦧",
     layout="centered"
 )
-# ảnh nền
-page_bg_img = '''
-<style>
-/* Container chính */
-.stApp {
-    background-image: url("https://e7.pngegg.com/pngimages/647/793/png-clipart-cartoon-orangutan-illustration-cartoon-smoke-orangutan-cartoon-character-animals-thumbnail.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
 
-/* Lớp phủ mờ - SỬA LẠI */
-.stApp::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("https://e7.pngegg.com/pngimages/647/793/png-clipart-cartoon-orangutan-illustration-cartoon-smoke-orangutan-cartoon-character-animals-thumbnail.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    filter: blur(8px);  /* Làm mờ ảnh */
-    z-index: -1;
-}
-
-/* Đảm bảo nội dung rõ nét */
-.main > div {
-    position: relative;
-    z-index: 1;
-    background-color: rgba(255, 255, 255, 0.85);  /* Nền trắng mờ cho nội dung */
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-}
-</style>
-'''
-
-st.markdown(page_bg_img, unsafe_allow_html=True)
 
 st.title("🦍 Sửa lỗi chính tả & Dịch văn bản")
 st.markdown("🐵🐵🐵")
+
+# === Hướng dẫn sử dụng (Sidebar) ===
+with st.sidebar:
+    st.header("Hướng dẫn sử dụng")
+    st.markdown("""
+    **Quy trình:**
+    1. **Nhập văn bản** 
+    2. **Nhấn "Check"** để tìm lỗi chính tả
+    3. **Chọn "Có"** nếu muốn dịch
+    5. **Chọn ngôn ngữ đích** từ dropdown
+    6. **Nhấn "Dịch ngay"** để xem kết quả
+    
+    **Lưu ý:**
+    - Cần kết nối Internet để dịch
+    - Nhấn **"Làm mới"** để nhập văn bản mới
+    **Tôi không chịu trách nhiệm cho sản phẩm của mình. Hãy tỉnh táo**""")
+    
+    st.markdown("---")
+    st.caption("Phiên bản 6.0 - Rất mệt mỏi")
+
 
 # === B2: Chuẩn bị session state cho tất cả ===
 if 'corrected_text' not in st.session_state:
@@ -234,21 +213,3 @@ if st.button("🔄 Refresh", type="secondary", use_container_width=True):
     st.session_state.target_lang = 'vi'
     st.rerun()
 
-# === Hướng dẫn sử dụng (Sidebar) ===
-with st.sidebar:
-    st.header("Hướng dẫn sử dụng")
-    st.markdown("""
-    **Quy trình:**
-    1. **Nhập văn bản** 
-    2. **Nhấn "Check"** để tìm lỗi chính tả
-    3. **Chọn "Có"** nếu muốn dịch
-    5. **Chọn ngôn ngữ đích** từ dropdown
-    6. **Nhấn "Dịch ngay"** để xem kết quả
-    
-    **Lưu ý:**
-    - Cần kết nối Internet để dịch
-    - Nhấn **"Làm mới"** để nhập văn bản mới
-    **Tôi không chịu trách nhiệm cho sản phẩm của mình. Hãy tỉnh táo**""")
-    
-    st.markdown("---")
-    st.caption("Phiên bản 6.0 - Rất mệt mỏi")
