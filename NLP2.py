@@ -3,6 +3,7 @@
 1. Nhập văn bản
 2. Kiểm tra và sửa lỗi chính tả tự động/thủ công
 3. Dịch văn bản sang nhiều ngôn ngữ khác nhau
+4. Không hoạt động tốt nếu kiểm tra chính tả tiếng Việt
 """
 
 #  B0: Thư viện code, framework và ngôn ngữ 
@@ -56,11 +57,11 @@ with st.sidebar:
     
     **Lưu ý:**
     - Cần kết nối Internet để dịch
-    - Nhấn **"Làm mới"** để nhập văn bản mới
-    - **Tôi không chịu trách nhiệm cho sản phẩm của mình**""")
+    - Nhấn **"Refresh"** để nhập văn bản mới
+    - ⚠️ **Tôi không chịu trách nhiệm cho sản phẩm của mình**""")
     
     st.markdown("---")
-    st.caption("Phiên bản 8.0 - Rất mệt mỏi")
+    st.caption("Phiên bản 9.0 - Rất mệt mỏi")
 
 
 #  B2: Chuẩn bị session state cho tất cả mọi thứ
@@ -80,7 +81,7 @@ if 'check_performed' not in st.session_state:
 #  B3: Người dùng nhập văn bản 
 input_text = st.text_area(
     "Nhập tiếng người - không nhập Toán 🙈:",
-    placeholder="Tiếng Anh thì đỡ sai hơn...",
+    placeholder="Nhập tiếng Anh thì đỡ sai hơn...",
     height=150,
     key="input_area"
 )
@@ -96,7 +97,7 @@ if st.button("🔍 Check!", type="primary", use_container_width=True):
     
     # Kiểm tra văn bản rỗng
     if not input_text or len(input_text.strip()) < 3:
-        st.warning("⚠️ Văn bản cần ít nhất 3 ký tự!")
+        st.warning("⚠️ Tối thiểu 3 ký tự!")
         st.session_state.show_translate_section = False
     else:
         #  Xử lý văn bản - Phát hiện ngôn ngữ gốc 
