@@ -123,18 +123,22 @@ if st.button("🔍 Kiểm tra văn bản", type="primary"):
         if should_translate == "Có":
             try:
                 # Lấy văn bản đã sửa (hoặc gốc nếu không có lỗi)
-                text_to_translate = corrected_text if 'corrected_text' in locals() else input_text
+                text_to_translate = corrected_text if corrected_text else input_text
+                
+                # Hiển thị văn bản sẽ được dịch
+                st.info(f"📝 Đang dịch văn bản: '{text_to_translate[:50]}...'")
                 
                 # Dịch sang ngôn ngữ đã chọn
                 translator = GoogleTranslator(source='auto', target=target_lang)
                 translated = translator.translate(text_to_translate)
                 
-                # Bước 9. Hiển thị kết quả dịch
+                # === Bước 10: Hiển thị kết quả dịch ===
                 st.success(f"✅ Kết quả dịch sang {LANGUAGES[target_lang]}:")
                 st.text_area("Bản dịch:", translated, height=150, key="translated_output")
                 
             except Exception as e:
                 st.error(f"❌ Lỗi khi dịch: {str(e)}")
+                st.info("💡 Gợi ý: Kiểm tra kết nối internet hoặc thử lại sau.")
         
 
 # Hướng dẫn sử dụng
