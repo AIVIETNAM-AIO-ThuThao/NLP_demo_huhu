@@ -80,7 +80,7 @@ if 'check_performed' not in st.session_state:
 #  B3: Người dùng nhập văn bản 
 input_text = st.text_area(
     "Nhập tiếng người - không nhập Toán 🙈:",
-    placeholder="Nhập văn bản vào đây...",
+    placeholder="Tiếng Anh thì đỡ sai hơn...",
     height=150,
     key="input_area"
 )
@@ -104,8 +104,8 @@ if st.button("🔍 Check!", type="primary", use_container_width=True):
             src_lang = detect(input_text)
             st.info(f"Bạn đang nói: {langcodes.get(src_lang).display_name('vi')}")
         except:
-            src_lang = 'vi'
-            st.warning("⚠️ Không thể phát hiện ngôn ngữ, mặc định là Tiếng Việt")
+            src_lang = 'en'
+            st.warning("⚠️ Không thể phát hiện ngôn ngữ, mặc định là Tiếng Anh")
         
         # Tách từ để kiểm tra chính tả
         words = input_text.split()
